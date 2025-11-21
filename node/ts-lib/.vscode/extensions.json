@@ -1,0 +1,30 @@
+{
+    "recommendations": [
+        // ===============================
+        // PROJECT ESSENTIALS
+        // ===============================
+        "dbaeumer.vscode-eslint",
+
+        // ===============================
+        // TO TEST MARKDOWN RENDERING
+        // ===============================
+        "kejun.markdown-alert",
+        "yzhang.markdown-all-in-one",
+        "houkanshan.vscode-markdown-footnote",
+        "myml.vscode-markdown-plantuml-preview",
+        "bierner.markdown-mermaid",
+        "gruntfuggly.todo-tree",
+
+        // ===============================
+        // NICE TO HAVE
+        // ===============================
+        "mhutchie.git-graph",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+    ],
+
+    "unwantedRecommendations": [
+        "editorconfig.editorconfig",
+        "ms-vscode.cpptools"
+    ]
+}

@@ -1,0 +1,41 @@
+name: SonarCloud Analysis # exclusive for sonar cloud
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # necessário para análise de PR
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate reports
+        run: npm run generate:reports
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=module-doc-lib
+            -Dsonar.organization=SEU_ORG
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.junit.reportPaths=reports/test-report.xml
+            -Dsonar.externalIssuesReportPaths=reports/eslint-report.xml
+            -Dsonar.sources=src
+            -Dsonar.tests=tests

@@ -1,0 +1,63 @@
+{
+  "name": "module-doc-lib",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Biblioteca para gerar documentação de projetos de software",
+  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsup",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.{ts,tsx} tests/**/*.{ts,tsx} --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "prepare": "husky",
+    
+    "prepare:reports": "node -e \"require('fs').mkdirSync('reports', { recursive: true })\"",
+    "lint:report": "node scripts/lint-report.js",
+    "test:report": "vitest run --coverage",
+    "generate:reports": "npm run prepare:reports && npm run lint:report && npm run test:report",
+    "sonar": "npm run generate:reports && node scripts/run-sonar.js",
+    
+    "commit": "cz"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "@vitest/coverage-istanbul": "^4.0.12",
+    "@vitest/coverage-v8": "^4.0.12",
+    "commitizen": "^4.3.1",
+    "cross-env": "^10.1.0",
+    "cz-conventional-changelog": "^3.0.1",
+    "dotenv": "^17.2.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-formatter-checkstyle": "^9.0.1",
+    "eslint-formatter-sonarqube": "^1.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.1.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.47.0",
+    "vite": "^6.4.1",
+    "vitest": "^4.0.8"
+  }
+}
