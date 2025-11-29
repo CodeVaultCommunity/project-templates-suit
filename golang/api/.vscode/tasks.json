@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Tests with Coverage",
+      "type": "shell",
+      "command": "make test-report",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean",
+      "type": "shell",
+      "command": "make clean"
+    }
+  ]
+}

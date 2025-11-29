@@ -1,0 +1,23 @@
+{
+    "go.useLanguageServer": true,
+    "editor.formatOnSave": true,
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "workspace",
+    "go.lintFlags": [
+        "run",
+        "--out-format",
+        "colored-line-number"
+    ],
+    "go.testOnSave": false,
+    "go.testFlags": [
+        "-v"
+    ],
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on"
+    },
+    "go.formatTool": "goimports",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always",
+        "source.fixAll": "always"
+    }
+}

@@ -1,0 +1,56 @@
+{
+  "new_func": {
+    "prefix": "new_func",
+    "body": [
+      "// ${2:FunctionName} ${1:describes what the function does.}",
+      "func ${2:FunctionName}(${3:args}) ${4:returnType} {",
+      "\t${0:// TODO: implement}",
+      "}"
+    ],
+    "description": "Creates a new Go function with valid GoDoc"
+  },
+
+  "new_mod": {
+    "prefix": "new_mod",
+    "body": [
+      "// Package ${2:modulename} ${1:describes the purpose of the module.}",
+      "package ${2:modulename}",
+      "",
+      "${0}"
+    ],
+    "description": "Creates a new Go module with valid documentation"
+  },
+
+  "new_struct": {
+    "prefix": "new_struct",
+    "body": [
+      "// ${2:StructName} ${1:describes the structure.}",
+      "type ${2:StructName} struct {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Creates a new struct with valid GoDoc"
+  },
+
+  "new_interface": {
+    "prefix": "new_interface",
+    "body": [
+      "// ${2:InterfaceName} ${1:describes the interface behavior.}",
+      "type ${2:InterfaceName} interface {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Creates an interface with valid documentation"
+  },
+
+  "new_goroutine": {
+    "prefix": "new_goroutine",
+    "body": [
+      "// ${2:GoroutineName} ${1:describes what the goroutine will execute.}",
+      "go func() {",
+      "\t${0:// TODO: implement}",
+      "}()"
+    ],
+    "description": "Creates a goroutine with valid documentation"
+  }
+}
