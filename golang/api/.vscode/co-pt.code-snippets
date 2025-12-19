@@ -1,4 +1,26 @@
 {
+  "new_handler": {
+    "prefix": "new_handler",
+    "body": [
+      "// ${2:FunctionName} ${1:descreve o que a função faz.}",
+      "// @Summary          ${1:descreve o que a função faz.}",
+      "// @Description      ${3:descreve com mais detalhes o que a função faz.}",
+      "// @${4:route_arg}   ${5:descreve argumentos de rota}",
+      "// @Accept           json",
+      "// @Produce          json",
+      "// @Param            ${6:descreve parâmetros}",
+      "// @Success          ${7:code} {object} object \"${8:objeto json}\"",
+      "// @Failure          ${9:code} {object} object \"${10:objeto json}\"",
+      "// @Router           /${11:path} [${$12:methods}]",
+
+
+      "func ${2:FunctionName}(${13:args}) ${14:returnType} {",
+      "\t${15:// TODO: implement}",
+      "}"
+    ],
+    "description": "Creates a new Go handler with valid GoDoc and swagger doc"
+  },
+
   "new_func": {
     "prefix": "new_func",
     "body": [

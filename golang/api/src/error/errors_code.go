@@ -31,7 +31,9 @@ const (
 
 // Bad Requests Errors
 const (
-	RequestInvalidJSON   = "request.invalid_json"
-	RequestMissingFields = "request.missing_fields"
-	RequestUnauthorized  = "request.unauthorized"
+	RequestInvalidJSON     = "request.invalid_json"
+	RequestInvalidURLParam = "request.invalid_url_param"
+	RequestNotFound        = "request.not_found"
+	RequestMissingFields   = "request.missing_fields"
+	RequestUnauthorized    = "request.unauthorized"
 )

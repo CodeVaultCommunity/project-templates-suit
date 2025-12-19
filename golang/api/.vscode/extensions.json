@@ -3,7 +3,5 @@
     "golang.go",
   ],
   "unwantedRecommendations": [
-    "ms-vscode.cpptools",
-    "formulahendry.auto-close-tag"
   ]
 }

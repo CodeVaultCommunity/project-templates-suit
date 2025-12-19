@@ -3,16 +3,21 @@ package repository
 
 import (
 	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql" // MySQL driver
+
+	// _ "github.com/lib/pq"                 // PostgreSQL driver
 	"fmt"
 	"log"
 	"mod_name/config"
 )
 
-// DB is the database
-var DB *sql.DB
+// SQLDB is the database object
+var SQLDB *sql.DB
 
+// DatabaseInit initialize the database
 func DatabaseInit() error {
-	db, err := sql.Open("postgres", config.DATABASE_URL)
+	db, err := sql.Open(config.Engine, config.DatabaseDNS)
 
 	if err != nil {
 		return fmt.Errorf("can't connect with database: %w", err)
@@ -23,13 +28,14 @@ func DatabaseInit() error {
 		return fmt.Errorf("error try ping database: %w", err)
 	}
 
-	DB = db
+	SQLDB = db
 	log.Println("Database connection success")
 	return nil
 }
 
+// DatabaseClose closes the database
 func DatabaseClose() {
-	if err := DB.Close(); err != nil {
+	if err := SQLDB.Close(); err != nil {
 		log.Printf("error closing database connection: %v", err)
 	}
 }

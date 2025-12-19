@@ -14,19 +14,17 @@ import (
 func setenv(key string, defaultValue string) (string, error) {
 	val, ok := os.LookupEnv(key)
 	if !ok {
-		val = defaultValue
 		err := os.Setenv(key, defaultValue)
 		return defaultValue, err
-	} else {
-		err := os.Setenv(key, val)
-		return val, err
 	}
+
+	return val, nil
 }
 
-func checkNoOpitionalKey(key string, canBeEmpty bool) error {
+func checkNoOptionalKey(key string, canBeEmpty bool) error {
 	val, ok := os.LookupEnv(key)
 	if !ok {
-		return fmt.Errorf("the key %s is not opitional", key)
+		return fmt.Errorf("the key %s is not optional", key)
 	}
 
 	if !canBeEmpty && len(val) == 0 {

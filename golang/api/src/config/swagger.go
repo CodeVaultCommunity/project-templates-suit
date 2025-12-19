@@ -22,14 +22,14 @@ import (
 //	router := gin.Default()
 //	api := router.Group("/api")
 //	config.RegisterSwagger(api)
-func RegisterSwagger(group *gin.RouterGroup) {
-	if group == nil {
+func RegisterSwagger(engine *gin.Engine) {
+	if engine == nil {
 		return
 	}
 
 	// Only expose Swagger documentation in non-production environments.
 	if gin.Mode() != gin.ReleaseMode {
-		group.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		engine.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 		message := fmt.Sprintf("Swagger successfully registered at: http://localhost%s/swagger/index.html", os.Getenv("API_PORT"))
 		log.Println(message)
 	}

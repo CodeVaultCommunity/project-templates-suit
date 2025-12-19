@@ -1,42 +1,42 @@
-// Package api describes the purpose of the module.
+// Package api contains some utils functions to start the api
 package api
 
 import (
-	"log"
-	middleware_errorhandler "mod_name/middlewares/error"
+	"mod_name/config"
+	middleware_errorhandler "mod_name/middlewares/mdwserror"
 	"os"
 
 	"github.com/gin-gonic/gin"
 )
 
-var engine *gin.Engine = nil
-var api *gin.RouterGroup = nil
+var engine *gin.Engine
+var api *gin.RouterGroup
 
-func startEngine() *gin.Engine {
+// StartEngine initialize a default gin engine with the error handler middleware and swagger registered
+func StartEngine() *gin.Engine {
 	if engine != nil {
 		return engine
 	}
 
 	engine = gin.Default()
 	engine.Use(middleware_errorhandler.ErrorHandlerMiddlewareGetter())
+	config.RegisterSwagger(engine)
 
 	return engine
 }
 
+// StartAPI starts the default gin engine, configure a group with the SUBPATH variable and returns this group.
+// Capture this group and use it to register the routes and methods.
 func StartAPI() *gin.RouterGroup {
+	if engine == nil {
+		return nil
+	}
+
 	if api != nil {
 		return api
 	}
 
-	startEngine()
-
 	api = engine.Group(os.Getenv("SUBPATH"))
-	return api
-}
 
-func RunServer() {
-	os.Getenv("")
-	if err := engine.Run(os.Getenv("API_PORT")); err != nil {
-		log.Fatalf("error starting server: %v", err)
-	}
+	return api
 }
