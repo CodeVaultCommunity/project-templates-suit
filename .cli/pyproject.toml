@@ -1,0 +1,11 @@
+[project]
+name = "cli"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pyinstaller>=6.20.0",
+    "requests>=2.34.2",
+    "typer>=0.26.7",
+]
