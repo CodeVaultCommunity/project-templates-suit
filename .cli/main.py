@@ -92,6 +92,16 @@ def _download_folder(folder: str, branch: str, trg: Path) -> None:
             elif item.get('type') == "dir":
                 _walk(item["path"])
     _walk(folder)
+
+def _get_current_path() -> Path:
+    import sys
+
+    if getattr(sys, 'frozen', False):
+        base_path = Path(sys.executable).parent
+    else:
+        base_path = Path(__file__).parent.resolve()
+        
+    return base_path
     
 app = typer.Typer()
 
@@ -101,9 +111,10 @@ def project(
     template: Annotated[_Templates, typer.Option("--template", '-t')],
     branch: Annotated[str, typer.Option("--branch", '-b')] = 'main',
     ):
-    current_path = Path(__file__).parent.resolve()
+    current_path = _get_current_path()
     project_path = current_path / name
     project_path.mkdir(parents=True, exist_ok=True)
+    print(f"project created at {project_path}")
     
     _download_folder(template.url, branch, project_path)
     needs_json = project_path / '.needs.json'
