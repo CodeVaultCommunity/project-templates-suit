@@ -1,0 +1,6 @@
+[
+    {
+        "path": "github",
+        "need_name": "workflows/deploy_ghpages.yml"
+    }
+]
