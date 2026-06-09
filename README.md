@@ -15,5 +15,8 @@ This repository centralizes common project setups so they can be cloned, importe
 2. Add it as a submodule or copy it into your new project.
 3. Follow the instructions in the starter’s individual README.
 
+### With CLI
+Download [project.exe](./project.exe), if in Windows envoriment, or [project](./project) and run it. Use `--help` to check commands.
+
 ## License
 APACHE-2.0
